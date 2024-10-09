@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import ValueDisplay from "./components/valueDisplay/index";
 
 function App() {
+  const [value, setValue] = useState(""); // Состояние для текущего значения
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Current and Previous Value</h1>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)} // Обновление состояния при изменении значения в input
+      />
+      <ValueDisplay value={value} />{" "}
+      {/* Передача текущего значения в дочерний компонент */}
     </div>
   );
 }
